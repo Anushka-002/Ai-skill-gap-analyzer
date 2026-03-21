@@ -1,0 +1,111 @@
+"""tests/test_analysis.py — Unit tests for analysis service"""
+import sys, os
+sys.path.insert(0, os.path.join(os.path.dirname(__file__), ".."))
+sys.path.insert(0, os.path.join(os.path.dirname(__file__), "../../ml-model"))
+
+from services.nlp_service import parse_resume_file
+from services.analysis_service import run_analysis
+
+
+SAMPLE_RESUME = b"""
+John Doe - Data Scientist
+Skills: Python, Machine Learning, Deep Learning, TensorFlow, SQL, Pandas, NumPy
+NLP experience with BERT and Hugging Face Transformers.
+4 years Python experience. 2 years TensorFlow.
+Education: M.S. Data Science, Stanford University
+Experience: Senior Data Scientist at TechCorp (2021-Present)
+"""
+
+EMPTY_RESUME = b""
+TEXT_ONLY_RESUME = b"I have some experience with programming."
+
+
+def test_parse_resume_basic():
+    result = parse_resume_file(SAMPLE_RESUME, "resume.pdf")
+    assert isinstance(result["skills"], list)
+    assert result["word_count"] > 0
+    skill_names = [s["skill"] for s in result["skills"]]
+    assert "python" in skill_names, f"Expected python in {skill_names}"
+    assert "machine learning" in skill_names
+    print(f"✅ Parsed {len(skill_names)} skills: {skill_names[:8]}")
+
+
+def test_parse_resume_empty():
+    result = parse_resume_file(EMPTY_RESUME, "empty.pdf")
+    assert isinstance(result["skills"], list)
+    print(f"✅ Empty resume handled gracefully")
+
+
+def test_parse_resume_no_skills():
+    result = parse_resume_file(TEXT_ONLY_RESUME, "weak.txt")
+    assert isinstance(result["skills"], list)
+    print(f"✅ No-skill resume returned {len(result['skills'])} skills")
+
+
+def test_analysis_ml_engineer():
+    parsed = parse_resume_file(SAMPLE_RESUME, "resume.pdf")
+    result = run_analysis(
+        resume_skills=parsed["skills"],
+        job_role_id="ml-engineer",
+        hours_per_week=10,
+    )
+    assert 0 <= result["ats_score"] <= 100
+    assert 0 <= result["match_score"] <= 100
+    assert result["profile_strength"] in ["Weak","Fair","Good","Strong","Excellent"]
+    assert isinstance(result["skill_gaps"], list)
+    assert isinstance(result["matched_skills"], list)
+    print(f"✅ ML Engineer analysis: ATS={result['ats_score']} Match={result['match_score']} Strength={result['profile_strength']}")
+    print(f"   Matched: {[m['skill'] for m in result['matched_skills']]}")
+    print(f"   Gaps: {[g['skill'] for g in result['skill_gaps']]}")
+
+
+def test_analysis_unknown_role():
+    try:
+        run_analysis([], "unknown-role-xyz")
+        assert False, "Should have raised ValueError"
+    except ValueError as e:
+        print(f"✅ Unknown role handled: {e}")
+
+
+def test_analysis_empty_resume():
+    result = run_analysis([], "ml-engineer")
+    assert result["matched_count"] == 0
+    assert result["ats_score"] == 0.0
+    print(f"✅ Empty resume analysis: all gaps, ATS=0")
+
+
+def test_roadmap_generation():
+    from analyzers.roadmap_generator import generate
+    roadmap = generate(
+        gaps=["pytorch", "kubernetes", "mlops"],
+        role="ml-engineer",
+        level="intermediate",
+        hours_per_week=10,
+    )
+    assert isinstance(roadmap["phases"], list)
+    assert roadmap["total_hours"] > 0
+    assert len(roadmap["career_path"]) > 0
+    print(f"✅ Roadmap: {len(roadmap['phases'])} phases, {roadmap['total_hours']}h, {roadmap['total_duration']}")
+    print(f"   Career path: {' → '.join(roadmap['career_path'][:3])}...")
+
+
+if __name__ == "__main__":
+    tests = [
+        test_parse_resume_basic,
+        test_parse_resume_empty,
+        test_parse_resume_no_skills,
+        test_analysis_ml_engineer,
+        test_analysis_unknown_role,
+        test_analysis_empty_resume,
+        test_roadmap_generation,
+    ]
+    passed = failed = 0
+    for t in tests:
+        try:
+            t()
+            passed += 1
+        except Exception as e:
+            print(f"❌ {t.__name__}: {e}")
+            failed += 1
+    print(f"\n{'='*50}")
+    print(f"Tests: {passed} passed, {failed} failed")

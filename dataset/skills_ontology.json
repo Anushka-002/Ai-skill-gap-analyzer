@@ -1,0 +1,408 @@
+{
+  "version": "1.0",
+  "skills": {
+    "python": {
+      "display": "Python",
+      "category": "Programming",
+      "aliases": ["python3","python 3","py"],
+      "ats_weight": 0.98,
+      "learn_hours": 60,
+      "prereqs": [],
+      "level_descriptors": {
+        "beginner": "Basic syntax, data types, control flow",
+        "intermediate": "OOP, file I/O, standard library, pip",
+        "advanced": "Decorators, generators, async, packaging",
+        "expert": "C extensions, CPython internals, performance"
+      },
+      "resources": [
+        {"title":"Python.org Tutorial","url":"https://docs.python.org/3/tutorial/","type":"docs","free":true},
+        {"title":"Automate the Boring Stuff","url":"https://automatetheboringstuff.com","type":"book","free":true}
+      ]
+    },
+    "machine learning": {
+      "display": "Machine Learning",
+      "category": "ML Fundamentals",
+      "aliases": ["ml","supervised learning","unsupervised learning","ml algorithms"],
+      "ats_weight": 0.95,
+      "learn_hours": 120,
+      "prereqs": ["python","statistics","linear algebra"],
+      "resources": [
+        {"title":"Andrew Ng ML Specialization","url":"https://coursera.org/specializations/machine-learning-introduction","type":"course","free":false},
+        {"title":"Hands-On ML (Géron)","url":"https://oreilly.com/library/view/hands-on-machine-learning/9781492032632/","type":"book","free":false}
+      ]
+    },
+    "deep learning": {
+      "display": "Deep Learning",
+      "category": "ML Fundamentals",
+      "aliases": ["dl","neural networks","neural network","ann","dnn"],
+      "ats_weight": 0.90,
+      "learn_hours": 80,
+      "prereqs": ["machine learning","python","linear algebra"],
+      "resources": [
+        {"title":"Fast.ai Practical DL","url":"https://course.fast.ai","type":"course","free":true},
+        {"title":"Deep Learning Specialization","url":"https://coursera.org/specializations/deep-learning","type":"course","free":false}
+      ]
+    },
+    "pytorch": {
+      "display": "PyTorch",
+      "category": "ML Frameworks",
+      "aliases": ["torch","pytorch lightning"],
+      "ats_weight": 0.88,
+      "learn_hours": 40,
+      "prereqs": ["deep learning","python"],
+      "resources": [
+        {"title":"PyTorch Official Tutorials","url":"https://pytorch.org/tutorials/","type":"docs","free":true},
+        {"title":"PyTorch for Deep Learning – Zero to Mastery","url":"https://zerotomastery.io/courses/learn-pytorch/","type":"course","free":false}
+      ]
+    },
+    "tensorflow": {
+      "display": "TensorFlow",
+      "category": "ML Frameworks",
+      "aliases": ["tf","tensorflow 2","tf2","tensorflow keras"],
+      "ats_weight": 0.85,
+      "learn_hours": 40,
+      "prereqs": ["deep learning","python"],
+      "resources": [
+        {"title":"TensorFlow Learn","url":"https://tensorflow.org/learn","type":"docs","free":true}
+      ]
+    },
+    "scikit-learn": {
+      "display": "Scikit-learn",
+      "category": "ML Frameworks",
+      "aliases": ["sklearn","scikit learn"],
+      "ats_weight": 0.82,
+      "learn_hours": 25,
+      "prereqs": ["machine learning","python"],
+      "resources": [
+        {"title":"Scikit-learn User Guide","url":"https://scikit-learn.org/stable/user_guide.html","type":"docs","free":true}
+      ]
+    },
+    "hugging face": {
+      "display": "Hugging Face",
+      "category": "ML Frameworks",
+      "aliases": ["huggingface","transformers library","hf transformers"],
+      "ats_weight": 0.82,
+      "learn_hours": 30,
+      "prereqs": ["nlp","pytorch"],
+      "resources": [
+        {"title":"HuggingFace NLP Course","url":"https://huggingface.co/learn/nlp-course","type":"course","free":true}
+      ]
+    },
+    "nlp": {
+      "display": "NLP",
+      "category": "NLP",
+      "aliases": ["natural language processing","text mining","language models"],
+      "ats_weight": 0.88,
+      "learn_hours": 60,
+      "prereqs": ["machine learning","python"],
+      "resources": [
+        {"title":"Speech & Language Processing (free)","url":"https://web.stanford.edu/~jurafsky/slp3/","type":"book","free":true}
+      ]
+    },
+    "large language models": {
+      "display": "LLMs / GenAI",
+      "category": "NLP",
+      "aliases": ["llm","llms","gpt","openai api","langchain","rag","prompt engineering","retrieval augmented generation"],
+      "ats_weight": 0.92,
+      "learn_hours": 40,
+      "prereqs": ["nlp","deep learning"],
+      "resources": [
+        {"title":"LLM University – Cohere","url":"https://docs.cohere.com/docs/llmu","type":"course","free":true},
+        {"title":"LangChain Docs","url":"https://python.langchain.com","type":"docs","free":true}
+      ]
+    },
+    "transformers": {
+      "display": "Transformers",
+      "category": "Generative AI",
+      "aliases": ["transformer architecture","attention mechanism","self-attention","vision transformer","vit"],
+      "ats_weight": 0.82,
+      "learn_hours": 30,
+      "prereqs": ["deep learning","nlp"],
+      "resources": [
+        {"title":"The Illustrated Transformer","url":"https://jalammar.github.io/illustrated-transformer/","type":"article","free":true}
+      ]
+    },
+    "fine-tuning": {
+      "display": "Fine-tuning",
+      "category": "Generative AI",
+      "aliases": ["model fine-tuning","transfer learning","lora","qlora","peft","instruction tuning","rlhf"],
+      "ats_weight": 0.75,
+      "learn_hours": 30,
+      "prereqs": ["large language models","hugging face"],
+      "resources": [
+        {"title":"PEFT Docs (HuggingFace)","url":"https://huggingface.co/docs/peft","type":"docs","free":true}
+      ]
+    },
+    "vector databases": {
+      "display": "Vector Databases",
+      "category": "Generative AI",
+      "aliases": ["vector db","faiss","pinecone","chroma","weaviate","qdrant","semantic search"],
+      "ats_weight": 0.70,
+      "learn_hours": 15,
+      "prereqs": ["large language models"],
+      "resources": [
+        {"title":"Pinecone Learning Center","url":"https://docs.pinecone.io/guides/get-started/overview","type":"docs","free":true}
+      ]
+    },
+    "sql": {
+      "display": "SQL",
+      "category": "Programming",
+      "aliases": ["mysql","postgresql","sqlite","postgres","t-sql","database queries"],
+      "ats_weight": 0.85,
+      "learn_hours": 30,
+      "prereqs": [],
+      "resources": [
+        {"title":"Mode SQL Tutorial","url":"https://mode.com/sql-tutorial/","type":"course","free":true}
+      ]
+    },
+    "docker": {
+      "display": "Docker",
+      "category": "MLOps",
+      "aliases": ["containerization","containers","dockerfile"],
+      "ats_weight": 0.75,
+      "learn_hours": 20,
+      "prereqs": [],
+      "resources": [
+        {"title":"Docker Get Started","url":"https://docs.docker.com/get-started/","type":"docs","free":true}
+      ]
+    },
+    "kubernetes": {
+      "display": "Kubernetes",
+      "category": "MLOps",
+      "aliases": ["k8s","container orchestration"],
+      "ats_weight": 0.60,
+      "learn_hours": 40,
+      "prereqs": ["docker"],
+      "resources": [
+        {"title":"Kubernetes.io Tutorials","url":"https://kubernetes.io/docs/tutorials/","type":"docs","free":true}
+      ]
+    },
+    "mlops": {
+      "display": "MLOps",
+      "category": "MLOps",
+      "aliases": ["ml ops","model deployment","model serving","model monitoring","ml pipeline"],
+      "ats_weight": 0.78,
+      "learn_hours": 60,
+      "prereqs": ["machine learning","docker"],
+      "resources": [
+        {"title":"MLOps Zoomcamp (free)","url":"https://github.com/DataTalksClub/mlops-zoomcamp","type":"course","free":true}
+      ]
+    },
+    "mlflow": {
+      "display": "MLflow",
+      "category": "MLOps",
+      "aliases": ["ml flow","experiment tracking","model registry"],
+      "ats_weight": 0.55,
+      "learn_hours": 15,
+      "prereqs": ["machine learning","python"],
+      "resources": [
+        {"title":"MLflow Documentation","url":"https://mlflow.org/docs/latest/index.html","type":"docs","free":true}
+      ]
+    },
+    "aws": {
+      "display": "AWS",
+      "category": "Cloud",
+      "aliases": ["amazon web services","sagemaker","aws lambda","ec2","s3","aws cloud","aws sagemaker"],
+      "ats_weight": 0.80,
+      "learn_hours": 60,
+      "prereqs": [],
+      "resources": [
+        {"title":"AWS Skill Builder (free tier)","url":"https://skillbuilder.aws","type":"course","free":true}
+      ]
+    },
+    "gcp": {
+      "display": "Google Cloud (GCP)",
+      "category": "Cloud",
+      "aliases": ["google cloud","google cloud platform","bigquery","vertex ai"],
+      "ats_weight": 0.65,
+      "learn_hours": 50,
+      "prereqs": [],
+      "resources": [
+        {"title":"Google Cloud Skills Boost","url":"https://cloudskillsboost.google","type":"course","free":true}
+      ]
+    },
+    "azure": {
+      "display": "Azure",
+      "category": "Cloud",
+      "aliases": ["microsoft azure","azure ml","azure machine learning","azure openai"],
+      "ats_weight": 0.65,
+      "learn_hours": 50,
+      "prereqs": [],
+      "resources": [
+        {"title":"Microsoft Learn","url":"https://learn.microsoft.com/azure","type":"docs","free":true}
+      ]
+    },
+    "statistics": {
+      "display": "Statistics",
+      "category": "ML Fundamentals",
+      "aliases": ["statistical analysis","probability","bayesian statistics","hypothesis testing"],
+      "ats_weight": 0.80,
+      "learn_hours": 60,
+      "prereqs": [],
+      "resources": [
+        {"title":"StatQuest (YouTube)","url":"https://youtube.com/@statquest","type":"video","free":true}
+      ]
+    },
+    "linear algebra": {
+      "display": "Linear Algebra",
+      "category": "ML Fundamentals",
+      "aliases": ["matrices","vectors","matrix operations","eigenvalues"],
+      "ats_weight": 0.60,
+      "learn_hours": 40,
+      "prereqs": [],
+      "resources": [
+        {"title":"3Blue1Brown – Essence of Linear Algebra","url":"https://youtube.com/playlist?list=PLZHQObOWTQDPD3MizzM2xVFitgF8hE_ab","type":"video","free":true}
+      ]
+    },
+    "pandas": {
+      "display": "Pandas",
+      "category": "Data Science",
+      "aliases": ["pandas library","dataframes","data wrangling"],
+      "ats_weight": 0.80,
+      "learn_hours": 20,
+      "prereqs": ["python"],
+      "resources": []
+    },
+    "numpy": {
+      "display": "NumPy",
+      "category": "Data Science",
+      "aliases": ["numpy library","numerical python"],
+      "ats_weight": 0.75,
+      "learn_hours": 15,
+      "prereqs": ["python"],
+      "resources": []
+    },
+    "data visualization": {
+      "display": "Data Visualization",
+      "category": "Data Science",
+      "aliases": ["matplotlib","seaborn","plotly","tableau","power bi","powerbi","data viz"],
+      "ats_weight": 0.75,
+      "learn_hours": 20,
+      "prereqs": ["python"],
+      "resources": []
+    },
+    "apache spark": {
+      "display": "Apache Spark",
+      "category": "Data Engineering",
+      "aliases": ["spark","pyspark","databricks","spark streaming"],
+      "ats_weight": 0.72,
+      "learn_hours": 50,
+      "prereqs": ["python","sql"],
+      "resources": []
+    },
+    "airflow": {
+      "display": "Apache Airflow",
+      "category": "Data Engineering",
+      "aliases": ["apache airflow","workflow orchestration","dags"],
+      "ats_weight": 0.60,
+      "learn_hours": 25,
+      "prereqs": ["python"],
+      "resources": []
+    },
+    "apache kafka": {
+      "display": "Apache Kafka",
+      "category": "Data Engineering",
+      "aliases": ["kafka","kafka streams","event streaming"],
+      "ats_weight": 0.55,
+      "learn_hours": 40,
+      "prereqs": [],
+      "resources": []
+    },
+    "computer vision": {
+      "display": "Computer Vision",
+      "category": "Computer Vision",
+      "aliases": ["cv","image recognition","object detection","image classification"],
+      "ats_weight": 0.78,
+      "learn_hours": 60,
+      "prereqs": ["deep learning","python"],
+      "resources": [
+        {"title":"CS231n Stanford (free)","url":"https://cs231n.stanford.edu","type":"course","free":true}
+      ]
+    },
+    "opencv": {
+      "display": "OpenCV",
+      "category": "Computer Vision",
+      "aliases": ["open cv","cv2"],
+      "ats_weight": 0.60,
+      "learn_hours": 20,
+      "prereqs": ["python"],
+      "resources": []
+    },
+    "bert": {
+      "display": "BERT / Embeddings",
+      "category": "NLP",
+      "aliases": ["bert model","roberta","distilbert","sentence transformers","sentence-bert"],
+      "ats_weight": 0.70,
+      "learn_hours": 20,
+      "prereqs": ["nlp","hugging face"],
+      "resources": []
+    },
+    "fastapi": {
+      "display": "FastAPI",
+      "category": "MLOps",
+      "aliases": ["fast api","flask","api development"],
+      "ats_weight": 0.65,
+      "learn_hours": 20,
+      "prereqs": ["python"],
+      "resources": [
+        {"title":"FastAPI Docs","url":"https://fastapi.tiangolo.com","type":"docs","free":true}
+      ]
+    },
+    "git": {
+      "display": "Git / GitHub",
+      "category": "Tools",
+      "aliases": ["github","gitlab","version control"],
+      "ats_weight": 0.75,
+      "learn_hours": 10,
+      "prereqs": [],
+      "resources": []
+    },
+    "generative ai": {
+      "display": "Generative AI",
+      "category": "Generative AI",
+      "aliases": ["gen ai","genai","diffusion models","stable diffusion","gans","text to image"],
+      "ats_weight": 0.88,
+      "learn_hours": 50,
+      "prereqs": ["deep learning"],
+      "resources": []
+    },
+    "r": {
+      "display": "R",
+      "category": "Programming",
+      "aliases": ["r programming","rstudio","r language"],
+      "ats_weight": 0.55,
+      "learn_hours": 50,
+      "prereqs": ["statistics"],
+      "resources": [
+        {"title":"R for Data Science (free)","url":"https://r4ds.had.co.nz","type":"book","free":true}
+      ]
+    },
+    "xgboost": {
+      "display": "XGBoost / LightGBM",
+      "category": "ML Frameworks",
+      "aliases": ["xgb","lightgbm","lgbm","catboost","gradient boosting","gbm"],
+      "ats_weight": 0.72,
+      "learn_hours": 15,
+      "prereqs": ["machine learning","python"],
+      "resources": []
+    },
+    "data science": {
+      "display": "Data Science",
+      "category": "Data Science",
+      "aliases": ["data analysis","data analytics","exploratory data analysis","eda"],
+      "ats_weight": 0.90,
+      "learn_hours": 100,
+      "prereqs": ["python","statistics"],
+      "resources": []
+    },
+    "data engineering": {
+      "display": "Data Engineering",
+      "category": "Data Engineering",
+      "aliases": ["data pipelines","etl","elt","data pipeline","data infrastructure"],
+      "ats_weight": 0.78,
+      "learn_hours": 80,
+      "prereqs": ["python","sql"],
+      "resources": []
+    }
+  }
+}
