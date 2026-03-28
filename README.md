@@ -4,7 +4,7 @@ A full-stack AI-powered career tool that analyzes your resume against job roles,
 
 ---
 
-## Features
+## ✨ Features
 
 - **Skill Gap Analysis** — upload your resume, pick a target role, get a detailed gap report with match score and ATS score
 - **ATS Scanner** — paste any job description and get a Claude-powered compatibility score with missing skills and learning paths
